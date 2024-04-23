@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { UniversidadComponent } from '../universidad/universidad.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [
+    UniversidadComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
