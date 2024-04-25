@@ -5,5 +5,9 @@
   </form>
 </section>
 <section class="results">
-  <app-universidad></app-universidad>
+<app-universidad
+  *ngFor="let universidad of listaUniversidades"
+  [universidad]="universidad">
+</app-universidad>
 </section>
+
