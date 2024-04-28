@@ -15,13 +15,26 @@ import { UniversidadService } from '../universidad.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
-
   listaUniversidades: Universidad[] = [];
   universidadService: UniversidadService = inject(UniversidadService);
+  listaUniversidadesFiltrada: Universidad[] = [];
 
   constructor() {
-    this.listaUniversidades =
-  this.universidadService.getAllUniversidades();
+    this.universidadService.getAllUniversidades().subscribe(
+      universidades => {
+        this.listaUniversidades = universidades;
+        this.listaUniversidadesFiltrada = universidades;
+      }
+    );
+   }
+
+  filtrar(text: string) {
+    if (!text) {
+      this.listaUniversidadesFiltrada = this.listaUniversidades;
+    } else {
+      this.listaUniversidadesFiltrada = this.listaUniversidades.filter(
+        universidad => universidad?.name.toLowerCase().includes(text.toLowerCase())
+      );
+    }
   }
 }

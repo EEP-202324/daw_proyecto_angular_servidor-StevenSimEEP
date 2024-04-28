@@ -1,0 +1,124 @@
+{
+  "locations": [
+  {
+  "id": 0,
+  "name": "Universidad Autónoma de Madrid",
+  "city": "Chicago",
+  "state": "IL",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+  "availableUnits": 4,
+  "wifi": true,
+  "laundry": true
+  },
+  {
+  "id": 1,
+  "name": "Universidad Carlos III de Madrid",
+  "city": "Santa Monica",
+  "state": "CA",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+  "availableUnits": 0,
+  "wifi": false,
+  "laundry": true
+  },
+  {
+  "id": 2,
+  "name": "Universidad Politécnica de Madrid",
+  "city": "Juneau",
+  "state": "AK",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+  "availableUnits": 1,
+  "wifi": false,
+  "laundry": false
+  },
+  {
+  "id": 3,
+  "name": "Universidad Complutense de Madrid",
+  "city": "Chicago",
+  "state": "IL",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t",
+  "availableUnits": 1,
+  "wifi": true,
+  "laundry": false
+  },
+  {
+  "id": 4,
+  "name": "Universidad Rey Juan Carlos de Madrid",
+  "city": "Gary",
+  "state": "IN",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd",
+  "availableUnits": 1,
+  "wifi": true,
+  "laundry": false
+  },
+  {
+  "id": 5,
+  "name": "Universidad Alfonso X El Sabio",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uax_recortada_2_0.jpg?itok=pN7oPKqA",
+  "availableUnits": 2,
+  "wifi": true,
+  "laundry": true
+  },
+  {
+  "id": 6,
+  "name": "Universidad Antonio de Nebrija",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/nebrija_recortada_2_0.jpg?itok=s_jybN-s",
+  "availableUnits": 5,
+  "wifi": true,
+  "laundry": true
+  },
+  {
+  "id": 7,
+  "name": "Universidad a Distancia de Madrid-UDIMA",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/udima-recortada1.jpg?itok=CabP7u61",
+  "availableUnits": 2,
+  "wifi": true,
+  "laundry": true
+  },
+  {
+  "id": 8,
+  "name": "Universidad Europea de Madrid",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uem_recortada.jpg?itok=CTcduz7w",
+  "availableUnits": 10,
+  "wifi": false,
+  "laundry": false
+  },
+  {
+  "id": 9,
+  "name": "Universidad Francisco de Vitoria",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/ufv_recortada.jpg?itok=LMcHvaPt",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+  },
+  {
+    "id": 10,
+    "name": "Universidad Internacional de la Empresa",
+    "city": "Portland",
+    "state": "OR",
+    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/img/publicaciones/unie_localizacion_universidades.jpg?itok=t0gqw7GW",
+    "availableUnits": 6,
+    "wifi": true,
+    "laundry": true
+  },
+  {
+    "id": 10,
+    "name": "Universidad Internacional Villanueva",
+    "city": "Portland",
+    "state": "OR",
+    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/img/publicaciones/villanueva_recortada_mapa.jpg?itok=4zcCpa36",
+    "availableUnits": 6,
+    "wifi": true,
+    "laundry": true
+  }
+  ]
+  }

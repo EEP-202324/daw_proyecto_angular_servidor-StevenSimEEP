@@ -1,5 +1,7 @@
 <section class="listing">
-  <img class="listing-photo" [src]="universidad.photo" alt="Exterior photo of {{universidad.name}}">
+  <img class="listing-photo"
+    [src]="universidad.photo"
+    alt="Exterior photo of {{universidad.name}}">
   <h2 class="listing-heading">{{ universidad.name }}</h2>
   <p class="listing-location">{{ universidad.city}}, {{universidad.state }}</p>
   <a [routerLink]="['/details', universidad.id]">Ver más</a>

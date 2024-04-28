@@ -10,3 +10,15 @@ header {
 .content {
   padding: var(--content-padding);
 }
+.brand-logo {
+  width: 100px;
+  position: absolute;
+  top: -10px;
+}
+.title{
+  text-decoration: none;
+  position: absolute;
+  left: 115px;
+  top: 25px;
+  color: #12104f;
+}

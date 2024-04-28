@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Universidad } from '../universidad';
 import { CommonModule } from '@angular/common';
+import { Universidad } from '../universidad';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -14,5 +14,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './universidad.component.css'
 })
 export class UniversidadComponent {
-  @Input() universidad! : Universidad;
+  @Input() universidad!: Universidad;
 }

@@ -14,6 +14,7 @@
 
 .listing-location::before {
   content: url('/assets/location-pin.svg') / '';
+  background-color: #12104f;
 }
 
 .listing-location {
