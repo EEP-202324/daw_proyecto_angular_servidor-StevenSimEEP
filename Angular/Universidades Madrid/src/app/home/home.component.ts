@@ -3,12 +3,14 @@ import { UniversidadComponent } from '../universidad/universidad.component';
 import { Universidad } from '../universidad';
 import { CommonModule } from '@angular/common';
 import { UniversidadService } from '../universidad.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     UniversidadComponent
   ],
   templateUrl: './home.component.html',
@@ -33,7 +35,7 @@ export class HomeComponent {
       this.listaUniversidadesFiltrada = this.listaUniversidades;
     } else {
       this.listaUniversidadesFiltrada = this.listaUniversidades.filter(
-        universidad => universidad?.name.toLowerCase().includes(text.toLowerCase())
+        universidad => universidad?.nombre.toLowerCase().includes(text.toLowerCase())
       );
     }
   }

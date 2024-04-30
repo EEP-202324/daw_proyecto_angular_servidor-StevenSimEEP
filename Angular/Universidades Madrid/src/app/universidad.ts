@@ -1,10 +1,8 @@
 export interface Universidad {
   id: number;
-  name: string;
-  city: string;
-  state: string;
+  nombre: string;
+  ubicacion: string;
+  estado: string;
   photo: string;
-  availableUnits: number;
-  wifi: boolean;
-  laundry: boolean;
+  disponibilidad: string;
 }

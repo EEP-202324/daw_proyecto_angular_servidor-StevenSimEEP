@@ -1,30 +1,34 @@
 <article>
   <img class="listing-photo" [src]="universidad?.photo"
-    alt="Exterior photo of {{universidad?.name}}"/>
+    alt="Exterior photo of {{universidad?.nombre}}"/>
   <section class="listing-description">
-    <h2 class="listing-heading">{{universidad?.name}}</h2>
-    <p class="listing-location">{{universidad?.city}}, {{universidad?.state}}</p>
+    <h2 class="listing-heading">{{universidad?.nombre}}</h2>
+    <p class="listing-location">{{universidad?.ubicacion}}</p>
   </section>
   <section class="listing-features">
     <h2 class="section-heading">Sobre esta universidad</h2>
     <ul>
-      <li>Units available: {{universidad?.availableUnits}}</li>
-      <li>Does this location have wifi: {{universidad?.wifi}}</li>
-      <li>Does this location have laundry: {{universidad?.laundry}}</li>
+      <li>Estado: {{universidad?.estado}}</li>
+      <li>Dsiponibilidad: {{universidad?.disponibilidad}}</li>
     </ul>
   </section>
   <section class="listing-apply">
-    <h2 class="section-heading">Apply now to live here</h2>
-    <form [formGroup]="applyForm" (submit)="submitApplication()">
-      <label for="first-name">First Name</label>
-      <input id="first-name" type="text" formControlName="firstName">
+    <button type="submit" class="primary" (click)="toggleFormulario()"> {{ textoBoton }} </button>
+    <form *ngIf="mostrarFormulario" [formGroup]="applyForm" (submit)="submitApplication()">
+      <h2 class="section-heading">Modificar universidad</h2>
+      <label for="first-name">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre">
 
-      <label for="last-name">Last Name</label>
-      <input id="last-name" type="text" formControlName="lastName">
+      <label for="ubicacion">Ubicación</label>
+      <input id="ubicacion" type="text" formControlName="ubicacion">
 
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email">
-      <button type="submit" class="primary">Apply now</button>
+      <label for="estado">Estado</label>
+      <input id="estado" type="text" formControlName="estado">
+
+      <label for="disponibilidad">Dsiponibilidad</label>
+      <input id="disponibilidad" type="text" formControlName="disponibilidad">
+
+      <button type="submit" class="primary">Aplicar</button>
     </form>
   </section>
 </article>

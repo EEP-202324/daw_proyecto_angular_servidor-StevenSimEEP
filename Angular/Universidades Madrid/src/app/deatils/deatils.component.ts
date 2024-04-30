@@ -20,11 +20,13 @@ export class DeatilsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   universidadService = inject(UniversidadService);
   universidad: Universidad | undefined;
-
+  mostrarFormulario: boolean = false;
+  textoBoton: string = 'Modificar universidad';
 applyForm = new FormGroup({
   nombre: new FormControl(''),
-  apellido: new FormControl(''),
-  email: new FormControl('')
+  ubicacion: new FormControl(''),
+  estado: new FormControl(''),
+  disponibilidad: new FormControl('')
 });
 
   constructor() {
@@ -37,11 +39,16 @@ applyForm = new FormGroup({
   submitApplication() {
     this.universidadService.submitApplication(
       this.applyForm.value.nombre ?? '',
-      this.applyForm.value.apellido ?? '',
-      this.applyForm.value.nombre ?? ''
+      this.applyForm.value.ubicacion ?? '',
+      this.applyForm.value.estado ?? '',
     );
 
     const peticion: Peticion = {...(this.applyForm.value)};
     this.universidadService.enviarPeticion(peticion);
+  }
+
+  toggleFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    this.textoBoton = this.mostrarFormulario ? 'Ocultar modificador' : 'Modificar universidad';
   }
 }
