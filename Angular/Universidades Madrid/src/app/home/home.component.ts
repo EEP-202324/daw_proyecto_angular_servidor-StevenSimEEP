@@ -4,6 +4,7 @@ import { Universidad } from '../universidad';
 import { CommonModule } from '@angular/common';
 import { UniversidadService } from '../universidad.service';
 import { RouterModule } from '@angular/router';
+import { DeatilsComponent } from '../deatils/deatils.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    UniversidadComponent
+    UniversidadComponent,
+    DeatilsComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -28,6 +30,17 @@ export class HomeComponent {
         this.listaUniversidadesFiltrada = universidades;
       }
     );
+
+    this.universidadService.getUniversidadActualizadaObservable().subscribe(
+      updatedUniversidad => {
+        if (updatedUniversidad) {
+          const index = this.listaUniversidades.findIndex(u => u.id === updatedUniversidad.id);
+          if (index !== -1) {
+            this.listaUniversidades[index] = updatedUniversidad;
+          }
+        }
+      }
+    );
    }
 
   filtrar(text: string) {
@@ -37,6 +50,13 @@ export class HomeComponent {
       this.listaUniversidadesFiltrada = this.listaUniversidades.filter(
         universidad => universidad?.nombre.toLowerCase().includes(text.toLowerCase())
       );
+    }
+  }
+
+  onUniversidadActualizada(updatedUniversidad: Universidad) {
+    const index = this.listaUniversidades.findIndex(u => u.id === updatedUniversidad.id);
+    if (index !== -1) {
+      this.listaUniversidades[index] = updatedUniversidad;
     }
   }
 }

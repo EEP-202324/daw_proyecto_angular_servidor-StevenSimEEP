@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { UniversidadService } from '../universidad.service';
 import { Universidad } from '../universidad';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Peticion } from '../peticion';
 
 @Component({
   selector: 'app-deatils',
@@ -26,25 +25,55 @@ applyForm = new FormGroup({
   nombre: new FormControl(''),
   ubicacion: new FormControl(''),
   estado: new FormControl(''),
-  disponibilidad: new FormControl('')
+  disponibilidad: new FormControl(''),
+  photo: new FormControl('URL imagen')
 });
+
+  @Output() universidadActualizada = new EventEmitter<Universidad>();
 
   constructor() {
     const universidadId = Number(this.route.snapshot.params['id']);
     this.universidadService.getUniversidadById(universidadId).subscribe(
       universidad => {
         this.universidad = universidad;
-      });
-  }
-  submitApplication() {
-    this.universidadService.submitApplication(
-      this.applyForm.value.nombre ?? '',
-      this.applyForm.value.ubicacion ?? '',
-      this.applyForm.value.estado ?? '',
+        this.applyForm.patchValue({
+          nombre: universidad.nombre,
+          ubicacion: universidad.ubicacion,
+          estado: universidad.estado,
+          disponibilidad: universidad.disponibilidad
+        });
+      }
     );
 
-    const peticion: Peticion = {...(this.applyForm.value)};
-    this.universidadService.enviarPeticion(peticion);
+    this.universidadService.getUniversidadActualizadaObservable().subscribe(
+      updatedUniversidad => {
+        if (updatedUniversidad && this.universidad && updatedUniversidad.id === this.universidad.id) {
+          this.universidad = updatedUniversidad;
+        }
+      }
+    )
+  }
+  submitApplication() {
+    if (this.universidad) {
+      const updatedUniversidad: Universidad = {
+        nombre: this.applyForm.value.nombre || '',
+        ubicacion: this.applyForm.value.ubicacion || '',
+        estado: this.applyForm.value.estado || '',
+        disponibilidad: this.applyForm.value.disponibilidad || '',
+        id: this.universidad.id || 0,
+        photo: this.applyForm.value.photo || ''
+      };
+
+      this.universidadService.updateUniversidad(updatedUniversidad).subscribe(
+        updated => {
+          this.universidad = updated;
+          this.universidadActualizada.emit(updated);
+        },
+        error => {
+          console.error('Error actualizando universidad:', error);
+        }
+      );
+    }
   }
 
   toggleFormulario() {
