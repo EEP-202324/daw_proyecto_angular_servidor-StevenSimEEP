@@ -1,13 +1,13 @@
 <section>
   <form>
     <input type="text" placeholder="Filter by city" #filter>
-    <button class="primary" type="button" (click)="filtrar(filter.value)">Search</button>
+    <button class="primary" type="button" (click)="filtrar(filter.value)">Buscar</button>
   </form>
 </section>
 <section>
   <button type="submit" class="add button-selector" [routerLink]="['/agregar-universidad']"
     routerLinkActive="router-link-active" >Agregar universidad</button>
-  <button type="submit" class="delete button-selector" [click]="confirmarEliminar()">Eliminar universidad</button>
+    <button type="button" class="delete button-selector" (click)="confirmarEliminar()">Eliminar universidad</button>
 </section>
 <section class="results">
 <app-universidad

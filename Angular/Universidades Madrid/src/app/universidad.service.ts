@@ -47,8 +47,13 @@ export class UniversidadService {
     return this.universidadActualizadaSubject.asObservable();
   }
 
-  emitirUniversidadActualizada(universidad: Universidad) {
-    this.universidadActualizadaSubject.next(universidad);
+  emitirUniversidadActualizada(universidad: Universidad | undefined) {
+    if(universidad !== undefined) {
+      this.universidadActualizadaSubject.next(universidad);
+    }
+  }
+  eliminarUniversidad(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }
 

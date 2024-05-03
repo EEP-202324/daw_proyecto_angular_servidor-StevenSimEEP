@@ -90,26 +90,10 @@
     },
     {
       "id": "11",
-      "nombre": "Universidad Internacional Villanueva",
-      "ubicacion": "CALLE COSTA BRAVA, 2 - 6",
-      "estado": "Privada",
-      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/img/publicaciones/villanueva_recortada_mapa.jpg?itok=4zcCpa36",
-      "disponibilidad": "z"
-    },
-    {
-      "id": "",
       "nombre": "Universidad San Pablo CEU ",
       "ubicacion": "C. de Julián Romea, 23, Chamberí, 28003 Madrid",
       "estado": "Privada",
       "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/ceu_recortada.jpg?itok=KEKaezra",
-      "disponibilidad": "Abierta"
-    },
-    {
-      "id": "",
-      "nombre": "Universidad San Pablo CEU ",
-      "ubicacion": "C. de Julián Romea, 23, Chamberí, 28003 Madrid",
-      "estado": "Privada",
-      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
       "disponibilidad": "Abierta"
     }
   ]
