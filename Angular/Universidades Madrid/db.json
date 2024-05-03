@@ -9,12 +9,12 @@
       "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB"
     },
     {
-      "id": "1",
       "nombre": "Universidad Carlos III de Madrid",
       "ubicacion": "CALLE MADRID, 126",
       "estado": "Pública",
-      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
-      "disponibilidad": "A"
+      "disponibilidad": "A",
+      "id": "1",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ"
     },
     {
       "id": "2",
@@ -102,6 +102,14 @@
       "ubicacion": "C. de Julián Romea, 23, Chamberí, 28003 Madrid",
       "estado": "Privada",
       "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/ceu_recortada.jpg?itok=KEKaezra",
+      "disponibilidad": "Abierta"
+    },
+    {
+      "id": "",
+      "nombre": "Universidad San Pablo CEU ",
+      "ubicacion": "C. de Julián Romea, 23, Chamberí, 28003 Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
       "disponibilidad": "Abierta"
     }
   ]

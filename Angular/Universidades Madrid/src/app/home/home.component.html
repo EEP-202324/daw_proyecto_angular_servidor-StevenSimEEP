@@ -7,7 +7,7 @@
 <section>
   <button type="submit" class="add button-selector" [routerLink]="['/agregar-universidad']"
     routerLinkActive="router-link-active" >Agregar universidad</button>
-  <button type="submit" class="delete button-selector" [routerLink]="['/eliminar-universidad']">Eliminar universidad</button>
+  <button type="submit" class="delete button-selector" [click]="confirmarEliminar()">Eliminar universidad</button>
 </section>
 <section class="results">
 <app-universidad

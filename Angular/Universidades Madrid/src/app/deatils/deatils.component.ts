@@ -1,4 +1,4 @@
-import { Component, inject, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { UniversidadService } from '../universidad.service';
@@ -26,7 +26,7 @@ applyForm = new FormGroup({
   ubicacion: new FormControl(''),
   estado: new FormControl(''),
   disponibilidad: new FormControl(''),
-  photo: new FormControl('URL imagen')
+  photo: new FormControl('')
 });
 
   @Output() universidadActualizada = new EventEmitter<Universidad>();
@@ -40,7 +40,8 @@ applyForm = new FormGroup({
           nombre: universidad.nombre,
           ubicacion: universidad.ubicacion,
           estado: universidad.estado,
-          disponibilidad: universidad.disponibilidad
+          disponibilidad: universidad.disponibilidad,
+          photo: universidad.photo
         });
       }
     );
@@ -61,7 +62,7 @@ applyForm = new FormGroup({
         estado: this.applyForm.value.estado || '',
         disponibilidad: this.applyForm.value.disponibilidad || '',
         id: this.universidad.id || 0,
-        photo: this.applyForm.value.photo || ''
+        photo: this.applyForm.value.photo || this.universidad.photo
       };
 
       this.universidadService.updateUniversidad(updatedUniversidad).subscribe(

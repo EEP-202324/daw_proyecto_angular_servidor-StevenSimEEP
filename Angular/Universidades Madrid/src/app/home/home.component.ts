@@ -59,4 +59,8 @@ export class HomeComponent {
       this.listaUniversidades[index] = updatedUniversidad;
     }
   }
+
+  confirmarEliminar() {
+    const nombreIngresado = prompt("Ingresa el nombre de la universidad que deseas elimnar")
+  }
 }
