@@ -40,7 +40,7 @@ export class UniversidadService {
     return this.http.delete(`${this.url}/c008`);
   }
 
-  agregarUniversidad(universidadDatos: any): Observable<Universidad> {
+  agregarUniversidad(universidadDatos: Omit<Universidad, 'id'>): Observable<Universidad> {
     return this.http.post<Universidad>(this.url, universidadDatos);
   }
   getUniversidadActualizadaObservable(): Observable<Universidad> {

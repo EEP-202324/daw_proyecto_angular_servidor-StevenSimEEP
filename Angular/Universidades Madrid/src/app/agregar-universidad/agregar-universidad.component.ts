@@ -15,18 +15,26 @@ import { UniversidadService } from '../universidad.service';
 })
 export class AgregarUniversidadComponent {
   FormUniversidad = new FormGroup({
-    id: new FormControl('',[Validators.required, Validators.pattern('^[0-9]+$')]),
-    nombre: new FormControl(''),
-    ubicacion: new FormControl(''),
-    estado: new FormControl(''),
+    nombre: new FormControl('', Validators.required),
+    ubicacion: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required),
     photo: new FormControl(''),
-    disponibilidad: new FormControl('')
+    disponibilidad: new FormControl('', Validators.required)
   });
 
   constructor(private universidadService:UniversidadService) {}
 
   agregar() {
-    const universidadDatos = this.FormUniversidad.value;
+    const { nombre, ubicacion, estado, photo, disponibilidad } = this.FormUniversidad.value;
+
+    const universidadDatos = {
+      nombre: nombre?.trim() ?? '',
+      ubicacion: ubicacion?.trim() ?? '',
+      estado: estado?.trim() ?? '',
+      photo: photo?.trim() ?? '',
+      disponibilidad: disponibilidad?.trim() ?? ''
+    };
+
     this.universidadService.agregarUniversidad(universidadDatos).subscribe({
       next: nuevaUniversidad => {
         console.log('Nueva universidad agregada', nuevaUniversidad);
