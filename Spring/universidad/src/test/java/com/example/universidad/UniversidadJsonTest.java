@@ -2,12 +2,28 @@ package com.example.universidad;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
+import java.io.IOException;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.boot.test.json.JacksonTester;
+
+@JsonTest
 public class UniversidadJsonTest {
 
-	@Test
-	void miPrimerTest() {
-		assertThat(42).isEqualTo(42);
-	}
+	@Autowired
+	private JacksonTester<Universidad> json;
+
+    @Test
+    void cashCardSerializationTest() throws IOException {
+        Universidad universidad = new Universidad(99L, 123.45);
+        assertThat(json.write(universidad)).isStrictlyEqualToJson("expected.json");
+        assertThat(json.write(universidad)).hasJsonPathNumberValue("@.id");
+        assertThat(json.write(universidad)).extractingJsonPathNumberValue("@.id")
+                .isEqualTo(99);
+        assertThat(json.write(universidad)).hasJsonPathNumberValue("@.amount");
+        assertThat(json.write(universidad)).extractingJsonPathNumberValue("@.amount")
+             .isEqualTo(123.45);
+    }
 }
