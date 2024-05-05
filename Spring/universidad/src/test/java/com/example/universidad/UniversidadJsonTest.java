@@ -16,7 +16,7 @@ public class UniversidadJsonTest {
 	private JacksonTester<Universidad> json;
 
     @Test
-    void cashCardSerializationTest() throws IOException {
+    void universidadSerializationTest() throws IOException {
         Universidad universidad = new Universidad(99L, 123.45);
         assertThat(json.write(universidad)).isStrictlyEqualToJson("expected.json");
         assertThat(json.write(universidad)).hasJsonPathNumberValue("@.id");
