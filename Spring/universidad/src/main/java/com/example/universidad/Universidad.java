@@ -1,8 +1,10 @@
 package com.example.universidad;
 
+import org.springframework.data.annotation.Id;
+
 public class Universidad {
 
-	private Long id;
+	private @Id Long id;
 	private String nombre;
 	private String ubicacion;
 	private String estado;
