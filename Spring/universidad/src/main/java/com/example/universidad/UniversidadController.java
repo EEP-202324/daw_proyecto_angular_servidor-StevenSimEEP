@@ -13,7 +13,10 @@ public class UniversidadController {
 	@GetMapping("/{requestedId}")
 	private ResponseEntity<Universidad> findById(@PathVariable Long requestedId) {
 		if (requestedId.equals(99L)) {
-	        Universidad universidad = new Universidad(99L, 123.45);
+	        Universidad universidad = new Universidad(0L, "Universidad Autónoma de Madrid"
+	        			, "Ciudad Universitaria de Cantoblanco, 28049 Madrid", "Pública"
+	        			, "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB"
+	        			, "Abierta");
 	        return ResponseEntity.ok(universidad);
 	    } else {
 	        return ResponseEntity.notFound().build();

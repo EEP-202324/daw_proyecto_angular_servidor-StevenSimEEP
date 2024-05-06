@@ -21,21 +21,34 @@ class UniversidadApplicationTests {
 	TestRestTemplate restTemplate;
 	
 	@Test
-	void shouldReturnAUniversidadWhenDataIsSaved() {
+	void devuelveUnaUnoversidadCuandoSeGuardenLosDatos() {
 		ResponseEntity<String> response = restTemplate.getForEntity("/universidades/99", String.class);
 		
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
 		Number id = documentContext.read("$.id");
-		assertThat(id).isEqualTo(99);
+		assertThat(id).isEqualTo(0);
 		
-		Double amount = documentContext.read("$.amount");
-		assertThat(amount).isEqualTo(123.45);
+		String nombre = documentContext.read("$.nombre");
+		assertThat(nombre).isEqualTo("Universidad Autónoma de Madrid");
+		
+		String ubicacion = documentContext.read("$.ubicacion");
+		assertThat(ubicacion).isEqualTo("Ciudad Universitaria de Cantoblanco, 28049 Madrid");
+		
+		String estado = documentContext.read("$.estado");
+		assertThat(estado).isEqualTo("Pública");
+		
+		String photo = documentContext.read("$.photo");
+		assertThat(photo).isEqualTo(
+				"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB");
+	
+		String disponibilidad = documentContext.read("$.disponibilidad");
+		assertThat(disponibilidad).isEqualTo("Abierta");
 	}
 	
 	@Test
-	void shouldNotReturnAUniversidaddWithAnUnknownId() {
+	void noDevuelveUniversidadCuandoLaIdEsDesconocida() {
 	  ResponseEntity<String> response = restTemplate.getForEntity("/universidades/1000", String.class);
 
 	  assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);

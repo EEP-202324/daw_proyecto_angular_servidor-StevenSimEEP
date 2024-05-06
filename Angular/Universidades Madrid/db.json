@@ -1,20 +1,20 @@
 {
   "locations": [
     {
+      "id": "0",
       "nombre": "Universidad Autónoma de Madrid",
       "ubicacion": "Ciudad Universitaria de Cantoblanco, 28049 Madrid",
       "estado": "Pública",
-      "disponibilidad": "Abierta",
-      "id": "0",
-      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB"
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+      "disponibilidad": "Abierta"
     },
     {
+      "id": "1",
       "nombre": "Universidad Carlos III de Madrid",
       "ubicacion": "CALLE MADRID, 126",
       "estado": "Pública",
-      "disponibilidad": "A",
-      "id": "1",
-      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ"
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+      "disponibilidad": "Cerrada"
     },
     {
       "id": "2",
