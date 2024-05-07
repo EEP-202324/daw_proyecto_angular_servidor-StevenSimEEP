@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.net.URI;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -53,6 +55,19 @@ class UniversidadApplicationTests {
 
 	  assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	  assertThat(response.getBody()).isBlank();
+	}
+	
+	@Test
+	void debeCrearNuevaUniversidad() {
+	   Universidad nuevaUniversidad = new Universidad(null, "Universidad Carlos III de Madrid", "CALLE MADRID, 126" , "Pública"
+			   	, "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ"
+			   	, "Cerrada");
+	   ResponseEntity<Void> createResponse = restTemplate.postForEntity("/universidades", nuevaUniversidad, Void.class);
+	   assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+	
+	   URI locationOfNewCashCard = createResponse.getHeaders().getLocation();
+	   ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewCashCard, String.class);
+	   assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 }
