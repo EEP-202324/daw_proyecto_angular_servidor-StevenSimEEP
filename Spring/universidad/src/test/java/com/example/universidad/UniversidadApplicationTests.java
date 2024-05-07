@@ -22,13 +22,13 @@ class UniversidadApplicationTests {
 	
 	@Test
 	void devuelveUnaUnoversidadCuandoSeGuardenLosDatos() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/universidades/99", String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity("/universidades/1", String.class);
 		
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
 		Number id = documentContext.read("$.id");
-		assertThat(id).isEqualTo(0);
+		assertThat(id).isEqualTo(1);
 		
 		String nombre = documentContext.read("$.nombre");
 		assertThat(nombre).isEqualTo("Universidad Autónoma de Madrid");

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController
 @RequestMapping("/universidades")
 public class UniversidadController {
 	private final UniversidadRepository universidadRepository;
 
 	
-	private UniversidadController(UniversidadRepository universidadRepository) {
+	public UniversidadController(UniversidadRepository universidadRepository) {
 		this.universidadRepository = universidadRepository;
 	}
 	

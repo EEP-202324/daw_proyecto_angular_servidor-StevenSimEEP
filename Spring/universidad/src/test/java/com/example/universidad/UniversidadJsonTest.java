@@ -17,13 +17,13 @@ public class UniversidadJsonTest {
 
 	@Test
 	void universidadSerializationTest() throws IOException {
-		Universidad universidad = new Universidad(0L, "Universidad Autónoma de Madrid",
+		Universidad universidad = new Universidad(1L, "Universidad Autónoma de Madrid",
 				"Ciudad Universitaria de Cantoblanco, 28049 Madrid", "Pública",
 				"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
 				"Abierta");
 		assertThat(json.write(universidad)).isStrictlyEqualToJson("expected.json");
 		assertThat(json.write(universidad)).hasJsonPathNumberValue("@.id");
-		assertThat(json.write(universidad)).extractingJsonPathNumberValue("@.id").isEqualTo(0);
+		assertThat(json.write(universidad)).extractingJsonPathNumberValue("@.id").isEqualTo(1);
 		assertThat(json.write(universidad)).hasJsonPathStringValue("@.nombre");
 		assertThat(json.write(universidad)).extractingJsonPathStringValue("@.nombre")
 				.isEqualTo("Universidad Autónoma de Madrid");
@@ -44,7 +44,7 @@ public class UniversidadJsonTest {
 	void universidadDeserializationTest() throws IOException {
 		String expected = """
 				{
-				    "id": 0,
+				    "id": 1,
 					"nombre": "Universidad Autónoma de Madrid",
 					"ubicacion": "Ciudad Universitaria de Cantoblanco, 28049 Madrid",
 					"estado": "Pública",
@@ -53,7 +53,7 @@ public class UniversidadJsonTest {
 				}
 				""";
 //       assertThat(json.parse(expected)).isEqualTo(new Universidad(99L, 123.45));
-		assertThat(json.parseObject(expected).getId()).isEqualTo(0);
+		assertThat(json.parseObject(expected).getId()).isEqualTo(1);
 		assertThat(json.parseObject(expected).getNombre()).isEqualTo("Universidad Autónoma de Madrid");
 		assertThat(json.parseObject(expected).getUbicacion()).isEqualTo(
 				"Ciudad Universitaria de Cantoblanco, 28049 Madrid");

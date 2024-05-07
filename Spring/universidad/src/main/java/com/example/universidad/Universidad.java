@@ -2,14 +2,25 @@ package com.example.universidad;
 
 import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
 public class Universidad {
 
-	private @Id Long id;
+	@jakarta.persistence.Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String nombre;
 	private String ubicacion;
 	private String estado;
 	private String photo;
 	private String disponibilidad;
+
+	public Universidad() {
+		
+	}
 	
 	public Universidad(Long id, String nombre, String ubicacion, String estado,
 				String photo, String disponibilidad) {
