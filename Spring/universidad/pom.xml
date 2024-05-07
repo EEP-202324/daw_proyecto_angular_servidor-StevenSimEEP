@@ -37,11 +37,10 @@
 			<!--<version>3.2.4</version>-->
 		</dependency>
 
-		<!-- MySQL Connector/J -->
+		<!-- com.h2database:h2 -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.27</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 	</dependencies>
 
