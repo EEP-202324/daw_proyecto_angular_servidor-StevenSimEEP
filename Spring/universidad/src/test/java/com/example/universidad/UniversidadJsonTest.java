@@ -17,30 +17,33 @@ public class UniversidadJsonTest {
 
 	@Autowired
 	private JacksonTester<Universidad> json;
-	
+
 	@Autowired
 	private JacksonTester<Universidad[]> jsonList;
-	
+
 	private Universidad[] universidades;
-	
+
 	@BeforeEach
 	void setUp() {
 		universidades = Arrays.array(
-				new Universidad(1L, "Universidad Autónoma de Madrid", "Ciudad Universitaria de Cantoblanco, 28049 Madrid"
-						, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB"
-						, "Abierta"),
-				new Universidad(2L, "Universidad Carlos III de Madrid", "CALLE MADRID, 126"
-						, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ"
-						, "Cerrada"),
-				new Universidad(3L, "Universidad Politécnica de Madrid", "CALLE RAMIRO DE MAEZTU, 7"
-							, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT"
-							, "Abierta"),
-				new Universidad(4L, "Universidad Complutense de Madrid", "Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid"
-							, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t"
-							, "Cerrada"),
-				new Universidad(5L, "Universidad Rey Juan Carlos de Madrid", " C/ Quintana, 2 – 3ª planta, 28008 Madrid"
-							, "Pública",  "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd"
-							, "Abierta"));
+				new Universidad(1L, "Universidad Autónoma de Madrid",
+				"Ciudad Universitaria de Cantoblanco, 28049 Madrid", "Pública",
+				"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+				"Abierta"),
+				new Universidad(2L, "Universidad Carlos III de Madrid", "CALLE MADRID, 126", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+						"Cerrada"),
+				new Universidad(3L, "Universidad Politécnica de Madrid", "CALLE RAMIRO DE MAEZTU, 7", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+						"Abierta"),
+				new Universidad(4L, "Universidad Complutense de Madrid",
+						"Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t",
+						"Cerrada"),
+				new Universidad(5L, "Universidad Rey Juan Carlos de Madrid",
+						" C/ Quintana, 2 – 3ª planta, 28008 Madrid", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd",
+						"Abierta"));
 	}
 
 	@Test
@@ -80,15 +83,64 @@ public class UniversidadJsonTest {
 //       assertThat(json.parse(expected)).isEqualTo(new Universidad(99L, 123.45));
 		assertThat(json.parseObject(expected).getId()).isEqualTo(2);
 		assertThat(json.parseObject(expected).getNombre()).isEqualTo("Universidad Politécnica de Madrid");
-		assertThat(json.parseObject(expected).getUbicacion()).isEqualTo(
-				"CALLE RAMIRO DE MAEZTU, 7");
+		assertThat(json.parseObject(expected).getUbicacion()).isEqualTo("CALLE RAMIRO DE MAEZTU, 7");
 		assertThat(json.parseObject(expected).getEstado()).isEqualTo("Pública");
-		assertThat(json.parseObject(expected).getPhoto()).isEqualTo("https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT");
+		assertThat(json.parseObject(expected).getPhoto()).isEqualTo(
+				"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT");
 		assertThat(json.parseObject(expected).getDisponibilidad()).isEqualTo("Abierta");
 	}
-	
+
 	@Test
-	void cashCardListSerializationTest() throws IOException {
-	   assertThat(jsonList.write(universidades)).isStrictlyEqualToJson("list.json");
+	void universidadesSerializationTest() throws IOException {
+		assertThat(jsonList.write(universidades)).isStrictlyEqualToJson("list.json");
+	}
+
+	@Test
+	void UniversidadesDeserializationTest() throws IOException {
+		String expected = """
+					         [
+				{
+				  "id": 1,
+				  "nombre": "Universidad Autónoma de Madrid",
+				  "ubicacion": "Ciudad Universitaria de Cantoblanco, 28049 Madrid",
+				  "estado": "Pública",
+				  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+				  "disponibilidad": "Abierta"
+				},
+				{
+				   "id": 2,
+				   "nombre": "Universidad Carlos III de Madrid",
+				   "ubicacion": "CALLE MADRID, 126",
+				   "estado": "Pública",
+				   "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+				   "disponibilidad": "Cerrada"
+				},
+				{
+				 	"id": 3,
+				    "nombre": "Universidad Politécnica de Madrid",
+				    "ubicacion": "CALLE RAMIRO DE MAEZTU, 7",
+				    "estado": "Pública",
+				    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+				    "disponibilidad": "Abierta"
+				},
+				{
+				    "id": 4,
+				    "nombre": "Universidad Complutense de Madrid",
+				    "ubicacion": "Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid",
+				    "estado": "Pública",
+				    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t",
+				    "disponibilidad": "Cerrada"
+				},
+				{
+				    "id": 5,
+				    "nombre": "Universidad Rey Juan Carlos de Madrid",
+				    "ubicacion": " C/ Quintana, 2 – 3ª planta, 28008 Madrid",
+				    "estado": "Pública",
+				    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd",
+				    "disponibilidad": "Abierta"
+				}
+				]
+					         """;
+		assertThat(jsonList.parse(expected)).isEqualTo(universidades);
 	}
 }
