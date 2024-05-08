@@ -3,6 +3,10 @@ package com.example.universidad;
 import java.net.URI;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,12 +41,12 @@ public class UniversidadController {
 	@PostMapping
 	private ResponseEntity<Void> crearUniversidad(@RequestBody Universidad newUniversidadRequest
 				, UriComponentsBuilder ucb) {
-		Universidad savedCashCard = universidadRepository.save(newUniversidadRequest);
-		   URI locationOfNewCashCard = ucb
-		            .path("cashcards/{id}")
-		            .buildAndExpand(savedCashCard.getId())
+		Universidad savedUniversidad = universidadRepository.save(newUniversidadRequest);
+		   URI locationOfNewUniversidad = ucb
+		            .path("universidades/{id}")
+		            .buildAndExpand(savedUniversidad.getId())
 		            .toUri();
-		   return ResponseEntity.created(locationOfNewCashCard).build();
+		   return ResponseEntity.created(locationOfNewUniversidad).build();
 	}
 	
 }
