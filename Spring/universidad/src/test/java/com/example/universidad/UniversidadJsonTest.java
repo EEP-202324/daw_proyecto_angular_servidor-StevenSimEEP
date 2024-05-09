@@ -33,7 +33,10 @@ public class UniversidadJsonTest {
 						"Abierta"),
 				new Universidad(2L, "Universidad Carlos III de Madrid", "CALLE MADRID, 126", "Pública",
 						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
-						"Cerrada"));
+						"Cerrada"),
+				new Universidad(3L, "Universidad Politécnica de Madrid",  "CALLE RAMIRO DE MAEZTU, 7", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+						"Abierta"));
 	}
 
 	@Test
@@ -86,7 +89,7 @@ public class UniversidadJsonTest {
 	}
 
 	@Test
-	void UniversidadesDeserializationTest() throws IOException {
+	void universidadesDeserializationTest() throws IOException {
 		String expected = """
 					         [
 				{
@@ -104,6 +107,14 @@ public class UniversidadJsonTest {
 				   "estado": "Pública",
 				   "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
 				   "disponibilidad": "Cerrada"
+				},
+				{
+				  	"id": "3",
+				  	"nombre": "Universidad Politécnica de Madrid",
+				  	"ubicacion": "CALLE RAMIRO DE MAEZTU, 7",
+				  	"estado": "Pública",
+				  	"photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+				  	"disponibilidad": "Abierta"
 				}
 				]
 					         """;
