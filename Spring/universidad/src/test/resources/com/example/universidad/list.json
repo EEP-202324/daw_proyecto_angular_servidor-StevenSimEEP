@@ -14,29 +14,5 @@
    "estado": "Pública",
    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
    "disponibilidad": "Cerrada"
-},
-{
- 	"id": 3,
-    "nombre": "Universidad Politécnica de Madrid",
-    "ubicacion": "CALLE RAMIRO DE MAEZTU, 7",
-    "estado": "Pública",
-    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
-    "disponibilidad": "Abierta"
-},
-{
-    "id": 4,
-    "nombre": "Universidad Complutense de Madrid",
-    "ubicacion": "Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid",
-    "estado": "Pública",
-    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t",
-    "disponibilidad": "Cerrada"
-},
-{
-    "id": 5,
-    "nombre": "Universidad Rey Juan Carlos de Madrid",
-    "ubicacion": " C/ Quintana, 2 – 3ª planta, 28008 Madrid",
-    "estado": "Pública",
-    "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd",
-    "disponibilidad": "Abierta"
 }
 ]

@@ -62,7 +62,7 @@ class UniversidadApplicationTests {
 	}
 	
 	@Test
-	//@DirtiesContext
+	@DirtiesContext
 	void debeCrearNuevaUniversidad() {
 	   Universidad nuevaUniversidad = new Universidad(
 			   3L, 
@@ -95,10 +95,34 @@ class UniversidadApplicationTests {
 	   assertThat(disponibilidad).isEqualTo("Cerrada");
 	}
 	
-	@Test
-	void devuelveTodasUniversidadesCuandoEsRequerida() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/universidades", String.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-	}
+	 @Test
+	 void devuelveUniversidadesCuandoSonRequeridas() {
+	     ResponseEntity<String> response = restTemplate.getForEntity("/universidades", String.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	     DocumentContext documentContext = JsonPath.parse(response.getBody());
+	     int cashCardCount = documentContext.read("$.length()");
+	     assertThat(cashCardCount).isEqualTo(2);
+
+	     JSONArray ids = documentContext.read("$..id");
+	     assertThat(ids).containsExactlyInAnyOrder(1, 2);
+
+	     JSONArray nombres = documentContext.read("$..nombre");
+	     assertThat(nombres).containsExactlyInAnyOrder("Universidad Autónoma de Madrid", "Universidad Carlos III de Madrid");
+	     
+	     JSONArray ubicaciones = documentContext.read("$..ubicacion");
+	     assertThat(ubicaciones).containsExactlyInAnyOrder("Ciudad Universitaria de Cantoblanco, 28049 Madrid", "CALLE MADRID, 126");
+	 
+	     JSONArray estados = documentContext.read("$..estado");
+	     assertThat(estados).containsExactlyInAnyOrder("Pública", "Pública");
+	     
+	     JSONArray photos = documentContext.read("$..photo");
+	     assertThat(photos).containsExactlyInAnyOrder(
+	    		 "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB"
+	    		 , "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ");
+	     
+	     JSONArray disponibilidades = documentContext.read("$..disponibilidad");
+	     assertThat(disponibilidades).containsExactlyInAnyOrder("Abierta", "Cerrada");
+	 }
 
 }
