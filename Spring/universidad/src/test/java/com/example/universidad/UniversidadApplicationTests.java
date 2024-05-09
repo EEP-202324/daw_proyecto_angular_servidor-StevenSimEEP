@@ -94,5 +94,11 @@ class UniversidadApplicationTests {
 	   assertThat(photo).isEqualTo("https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ");
 	   assertThat(disponibilidad).isEqualTo("Cerrada");
 	}
+	
+	@Test
+	void devuelveTodasUniversidadesCuandoEsRequerida() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/universidades", String.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}
 
 }

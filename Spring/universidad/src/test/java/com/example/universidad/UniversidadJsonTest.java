@@ -27,9 +27,9 @@ public class UniversidadJsonTest {
 	void setUp() {
 		universidades = Arrays.array(
 				new Universidad(1L, "Universidad Autónoma de Madrid",
-				"Ciudad Universitaria de Cantoblanco, 28049 Madrid", "Pública",
-				"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
-				"Abierta"),
+						"Ciudad Universitaria de Cantoblanco, 28049 Madrid", "Pública",
+						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+						"Abierta"),
 				new Universidad(2L, "Universidad Carlos III de Madrid", "CALLE MADRID, 126", "Pública",
 						"https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
 						"Cerrada"),
