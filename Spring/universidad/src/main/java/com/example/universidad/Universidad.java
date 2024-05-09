@@ -1,5 +1,7 @@
 package com.example.universidad;
 
+import java.util.Objects;
+
 import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Entity;
@@ -22,6 +24,12 @@ public class Universidad {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "Universidad [id=" + id + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", estado=" + estado
+				+ ", photo=" + photo + ", disponibilidad=" + disponibilidad + "]";
+	}
+
 	public Universidad(Long id, String nombre, String ubicacion, String estado,
 				String photo, String disponibilidad) {
 		super();
@@ -79,6 +87,25 @@ public class Universidad {
 
 	public void setDisponibilidad(String disponibilidad) {
 		this.disponibilidad = disponibilidad;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(disponibilidad, estado, id, nombre, photo, ubicacion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Universidad other = (Universidad) obj;
+		return Objects.equals(disponibilidad, other.disponibilidad) && Objects.equals(estado, other.estado)
+				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(photo, other.photo) && Objects.equals(ubicacion, other.ubicacion);
 	}
 
 	

@@ -124,5 +124,15 @@ class UniversidadApplicationTests {
 	     JSONArray disponibilidades = documentContext.read("$..disponibilidad");
 	     assertThat(disponibilidades).containsExactlyInAnyOrder("Abierta", "Cerrada");
 	 }
+	 
+	 @Test
+	 void devuelveUnaPaginaDeUniversidades() {
+	     ResponseEntity<String> response = restTemplate.getForEntity("/universidades?page=0&size=1", String.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	     DocumentContext documentContext = JsonPath.parse(response.getBody());
+	     JSONArray page = documentContext.read("$[*]");
+	     assertThat(page.size()).isEqualTo(1);
+	 }
 
 }
