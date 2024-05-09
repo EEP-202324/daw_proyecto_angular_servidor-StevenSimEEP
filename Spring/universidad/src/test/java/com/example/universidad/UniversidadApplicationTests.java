@@ -203,5 +203,17 @@ class UniversidadApplicationTests {
 	             .exchange("/universidades/4", HttpMethod.PUT, request, Void.class);
 	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	 }
+	 
+	 @Test
+	 @DirtiesContext
+	 void eliminaUnaUniversidadExistente() {
+	     ResponseEntity<Void> response = restTemplate
+	             .exchange("/universidades/1754", HttpMethod.DELETE, null, Void.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+	     
+	     ResponseEntity<String> getResponse = restTemplate
+	             .getForEntity("/universidades/1754", String.class);
+	     assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND); 
+	 }
 
 }
