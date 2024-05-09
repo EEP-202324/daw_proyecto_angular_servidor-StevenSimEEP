@@ -152,7 +152,7 @@ class UniversidadApplicationTests {
 	 }
 	 
 	 @Test
-	 void decuelveUnaPaginaOrdenaDeUniversidadesSinParametrosYUtilizarValoresPredeterminados() {
+	 void devuelveUnaPaginaOrdenaDeUniversidadesSinParametrosYUtilizarValoresPredeterminados() {
 	     ResponseEntity<String> response = restTemplate.getForEntity("/universidades", String.class);
 	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -174,6 +174,34 @@ class UniversidadApplicationTests {
 	     ResponseEntity<Void> response = restTemplate
 	             .exchange("/universidades/3", HttpMethod.PUT, request, Void.class);
 	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+	     ResponseEntity<String> getResponse = restTemplate
+	             .getForEntity("/universidades/3", String.class);
+	     assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+	     DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
+	     Number id = documentContext.read("$.id");
+	     String nombre = documentContext.read("$.nombre");
+	     String ubicacion = documentContext.read("$.ubicacion");
+	     String estado = documentContext.read("$.estado");
+	     String photo = documentContext.read("$.photo");
+	     String disponibilidad = documentContext.read("$.disponibilidad");
+	     assertThat(id).isEqualTo(3);
+	     assertThat(nombre).isEqualTo("Universidad Politecnica de Madrid");
+	     assertThat(ubicacion).isEqualTo("CALLE RAMIRO DE MAEZTU, 7");
+	     assertThat(estado).isEqualTo("Pública");
+	     assertThat(photo).isEqualTo("https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT");
+	     assertThat(disponibilidad).isEqualTo("Abierta");
+	 }
+	 
+	 @Test
+	 void noActualizaUnaUniversidadQueNoExiste() {
+	     Universidad universidadDesconocida = new Universidad(4L, "Universidad Complutense de Madrid", "Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid"
+	    		 	, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t"
+	    		 	, "Cerrada");
+	     HttpEntity<Universidad> request = new HttpEntity<>(universidadDesconocida);
+	     ResponseEntity<Void> response = restTemplate
+	             .exchange("/universidades/4", HttpMethod.PUT, request, Void.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	 }
 
 }

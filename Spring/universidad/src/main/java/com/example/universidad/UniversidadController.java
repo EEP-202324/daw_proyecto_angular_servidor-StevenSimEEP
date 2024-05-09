@@ -64,8 +64,22 @@ public class UniversidadController {
 	
 	@PutMapping("/{requestedId}")
 	private ResponseEntity<Void> putUniversidad(@PathVariable Long requestedId, @RequestBody Universidad universidadActualizada) {
-	    // just return 204 NO CONTENT for now.
-	    return ResponseEntity.noContent().build();
+	    Optional<Universidad> optional = universidadRepository.findById(requestedId);
+		if (optional.isPresent()) {
+			Universidad universidad = optional.get();
+			Universidad updateUniversidad = new Universidad (
+						universidad.getId(),
+						universidadActualizada.getNombre(),
+						universidadActualizada.getUbicacion(),
+						universidadActualizada.getEstado(),
+						universidadActualizada.getPhoto(),
+						universidadActualizada.getDisponibilidad());
+			universidadRepository.save(updateUniversidad);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	   
 	}
 	
 }
