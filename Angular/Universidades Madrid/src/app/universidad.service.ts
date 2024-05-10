@@ -26,7 +26,7 @@ export class UniversidadService {
   }
 
   agregarUniversidad(universidadDatos: Omit<Universidad, 'id'>): Observable<Universidad> {
-    return this.http.post<Universidad>(this.url, universidadDatos);
+    return this.http.post<any>(this.url, universidadDatos);
   }
   getUniversidadActualizadaObservable(): Observable<Universidad> {
     return this.universidadActualizadaSubject.asObservable();

@@ -7,12 +7,12 @@
 <section>
   <button type="submit" class="add button-selector" [routerLink]="['/agregar-universidad']"
     routerLinkActive="router-link-active" >Agregar universidad</button>
-    <button type="button" class="delete button-selector" (click)="confirmarEliminar()">Eliminar universidad</button>
 </section>
 <section class="results">
 <app-universidad
   *ngFor="let universidad of listaUniversidadesFiltrada"
-  [universidad]="universidad">
+  [universidad]="universidad"
+  (universidadEliminada)="eliminarUniversidad($event)">
 </app-universidad>
 
 </section>

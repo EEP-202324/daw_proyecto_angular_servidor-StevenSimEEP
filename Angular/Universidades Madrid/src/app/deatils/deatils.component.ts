@@ -67,6 +67,7 @@ applyForm = new FormGroup({
 
       this.universidadService.updateUniversidad(updatedUniversidad).subscribe(
         updated => {
+          console.log("xd", updated)
           this.universidad = updated;
           this.universidadActualizada.emit(updated);
         },
