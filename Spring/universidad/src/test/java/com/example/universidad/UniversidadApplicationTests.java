@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 class UniversidadApplicationTests {
 
 	@Autowired
@@ -158,22 +158,22 @@ class UniversidadApplicationTests {
 
 	     DocumentContext documentContext = JsonPath.parse(response.getBody());
 	     JSONArray page = documentContext.read("$[*]");
-	     assertThat(page.size()).isEqualTo(3);
+	     assertThat(page.size()).isEqualTo(4);
 
 	     JSONArray nombres = documentContext.read("$..nombre");
-	     assertThat(nombres).containsExactly("Universidad Autónoma de Madrid", "Universidad Carlos III de Madrid", "Universidad Politécnica de Madrid");
+	     assertThat(nombres).containsExactly("Universidad Autónoma de Madrid", "Universidad Carlos III de Madrid", "Universidad Carlos III de Madrid", "Universidad Politécnica de Madrid");
 	 }
 	 
 	 @Test
 	 @DirtiesContext
 	 void actualizaUnaUniversidadExistente() {
-	     Universidad universidadActualizada = new Universidad(3L, "Universidad Politecnica de Madrid", "CALLE RAMIRO DE MAEZTU, 7"
+	     Universidad universidadActualizada = new Universidad(3L, "Universidad Politécnica de Madrid", "CALLE RAMIRO DE MAEZTU, 7"
 	    		 	, "Pública", "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT"
 	    		 	, "Abierta");
 	     HttpEntity<Universidad> request = new HttpEntity<>(universidadActualizada);
 	     ResponseEntity<Void> response = restTemplate
 	             .exchange("/universidades/3", HttpMethod.PUT, request, Void.class);
-	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 	     ResponseEntity<String> getResponse = restTemplate
 	             .getForEntity("/universidades/3", String.class);
@@ -186,7 +186,7 @@ class UniversidadApplicationTests {
 	     String photo = documentContext.read("$.photo");
 	     String disponibilidad = documentContext.read("$.disponibilidad");
 	     assertThat(id).isEqualTo(3);
-	     assertThat(nombre).isEqualTo("Universidad Politecnica de Madrid");
+	     assertThat(nombre).isEqualTo("Universidad Politécnica de Madrid");
 	     assertThat(ubicacion).isEqualTo("CALLE RAMIRO DE MAEZTU, 7");
 	     assertThat(estado).isEqualTo("Pública");
 	     assertThat(photo).isEqualTo("https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT");
