@@ -14,6 +14,7 @@
   </section>
   <section class="listing-apply">
     <button type="submit" class="primary" (click)="toggleFormulario()"> {{ textoBoton }} </button>
+    <button type="button" class="primary" (click)="eliminarUniversidad()">Eliminar universidad</button>
     <form *ngIf="mostrarFormulario" [formGroup]="applyForm" (submit)="submitApplication()">
       <h2 class="section-heading">Modificar universidad</h2>
       <label for="first-name">Nombre</label>

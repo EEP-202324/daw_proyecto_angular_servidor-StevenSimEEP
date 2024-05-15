@@ -21,4 +21,6 @@ button.primary {
   color: white;
   border-radius: 8px;
   margin-bottom: 15px;
+  margin-right: 10px ;
+  cursor: pointer;
 }

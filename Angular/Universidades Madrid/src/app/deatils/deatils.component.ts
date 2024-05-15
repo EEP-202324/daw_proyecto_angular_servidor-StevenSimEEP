@@ -1,6 +1,6 @@
 import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UniversidadService } from '../universidad.service';
 import { Universidad } from '../universidad';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +31,7 @@ applyForm = new FormGroup({
 
   @Output() universidadActualizada = new EventEmitter<Universidad>();
 
-  constructor() {
+  constructor(private router: Router) {
     const universidadId = Number(this.route.snapshot.params['id']);
     this.universidadService.getUniversidadById(universidadId).subscribe(
       universidad => {
@@ -52,7 +52,21 @@ applyForm = new FormGroup({
           this.universidad = updatedUniversidad;
         }
       }
-    )
+    );
+  }
+
+  eliminarUniversidad(): void {
+    if (this.universidad) {
+      this.universidadService.eliminarUniversidad(this.universidad.id).subscribe(
+        () => {
+          console.log('Universidad eliminada exitosamente');
+          this.router.navigate(['/']);
+        },
+        error => {
+          console.error('Error al eliminar la universidad:', error);
+        }
+      );
+    }
   }
   submitApplication() {
     if (this.universidad) {
