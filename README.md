@@ -10,10 +10,10 @@ El proyecto consiste en una aplicación web desarrollada con Angular en el front
 
 La aplicación posee tres pantallas, la cual es cpaz de listar universidades y añadir nuevas.
 
-- Hay una  barra de búsqueda el cual filtar universidades.
+- Hay una  barra de búsqueda el cual filta universidades.
 - Posee una pantalla que consulta los datos de una uversidad.
 - Tiene un formulario la cual permite modifcar los datos de una universidad.
-- También existe un boton de eliminación en listado de las universidades
+- También existe un boton de eliminación en listado de las universidades y en los detalles de cada universidad.
 
 #### Spring: 
 
@@ -30,7 +30,6 @@ Esta aplicación se conecta con una base de datos en este caso MySQL, donde exis
 
 #### Angular:
 
-- Faltaría agregar el boton eliminar en los detalles de cada universidad.
 - Falta El widget de selección para los valores en las pantallas de creación/modificación.
 - Falta la paginación.
 - No se han agregado Test Unitarios.
