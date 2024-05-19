@@ -40,3 +40,6 @@ Esta aplicación se conecta con una base de datos en este caso MySQL, donde exis
 - Falta añadir una tabla adicional.
 - Falta consultas de búsqueda con filtrado. 
 
+### Video proyecto final
+
+- https://eepmad-my.sharepoint.com/:v:/g/personal/salexis-simbana1_eep-igroup_com/EXewMtv7V4xDqsYRIOuIH0QBHylm87pu8_O87_OpUEKMrA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=E8UQF3
